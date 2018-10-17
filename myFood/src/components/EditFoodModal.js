@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { View, Modal, TextInput, TouchableOpacity, Alert, StyleSheet, Text } from 'react-native';
 import axios from 'axios';
 
+import baseURL from '../baseURL';
 import stylesd from '../styles';
-const baseURL = 'http://localhost:8080'
+// const baseURL = 'http://localhost:8080'
 // import styles from './styles';
 
 export default class EditFoodModal extends Component {

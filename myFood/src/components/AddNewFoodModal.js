@@ -1,8 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { View, Modal, StyleSheet, Text, TextInput, Alert, TouchableOpacity } from 'react-native';
-
-const baseURL = 'http://localhost:8080/food';
+import baseURL from '../baseURL';
 
 export default class AddNewFoodModal extends React.Component{
   constructor(props){
@@ -16,7 +15,7 @@ export default class AddNewFoodModal extends React.Component{
     const { name, calories } = this.state;
     const o = {};
     o[name] = calories;
-    axios.post(baseURL, o).then( res => {
+    axios.post(`${baseURL}/food`, o).then( res => {
       Alert.alert(res.data);
       this.setState({ name: '', calories: '' })
     }).catch( err => {

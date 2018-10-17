@@ -17,8 +17,8 @@ import axios from 'axios';
 import stylesd from '../styles';
 import Food from '../components/Food';
 import AddNewFoodModal from '../components/AddNewFoodModal';
-
-const baseURL = 'http://localhost:8080'
+import baseURL from '../baseURL';
+// const baseURL = 'http://localhost:8080'
 const { width } = Dimensions.get('window');
 
 export default class AppScreen extends React.Component {
