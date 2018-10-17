@@ -54,7 +54,7 @@ app.post('/food', (req, res) => {
   if(!foods[name]) {
     const newFoods = {...foods };
     newFoods[name] = calories
-    fs.writeFile('foods.json', JSON.stringify(newFoods), (err) => {
+    fs.writeFile(path, JSON.stringify(newFoods), (err) => {
       if(err) console.log(err);
     })
     res.status(201).send('Item has been created');
@@ -76,7 +76,7 @@ app.patch('/food', (req, res) => {
   if(foods[name]) {
     const newFoods = {...foods };
     newFoods[name] = calories;
-    fs.writeFile('foods.json', JSON.stringify(newFoods), (err) => {
+    fs.writeFile(path, JSON.stringify(newFoods), (err) => {
       if(err) console.log(err);
     })
     res.status(200).send('Item has been modified');
@@ -88,13 +88,13 @@ app.patch('/food', (req, res) => {
 // comida -> ()
 app.delete('/food/:name', (req, res) => {
   const name = req.params.name;
-  console.log(`delete ${name} on /food`);
-  if(foods[name]) {
+  console.log(`delete ${name} on /food`, name, foods[name]);
+  if(foods[name] !== undefined || foods[name] !== null) {
     delete foods[name]
-    fs.writeFile('foods.json', JSON.stringify(foods), (err) => {
+    fs.writeFile(path, JSON.stringify(foods), (err) => {
       if(err) console.log(err);
     })
-    res.status(410).send('Item has been deleted');
+    res.status(200).send('Item has been deleted');
   }
   else res.status(404).send('Item not found!');
 });
