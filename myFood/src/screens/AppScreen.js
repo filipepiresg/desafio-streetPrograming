@@ -49,8 +49,8 @@ export default class AppScreen extends React.Component {
       if(res.status === 200) {
         Alert.alert(`Calories of ${search}`, `${res.data}`)
       } else {
-        console.log(res);
-        // Alert.alert(`${res.data}`)
+        // console.log(res);
+        Alert.alert(`${res.data}`)
       }
     }).catch(err => {
       // this.hideLoading();
@@ -63,7 +63,7 @@ export default class AppScreen extends React.Component {
         this.setState({ data: {...res.data} })
       } else {
         console.log(res);
-        // Alert.alert(`${res.data}`)
+        Alert.alert(res.data)
       }
     }).catch( err => {
       console.log(err);
